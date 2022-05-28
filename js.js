@@ -1,50 +1,50 @@
 var carta1 = {
     nome: "Bulbassauro",
+    imagem:"https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
     atributos: { 
         ataque: 7,
         defesa: 8,
         magia: 6,
-        mana: 8,
     }
 };
 
 var carta2 = {
     nome: "Dart Vader",
+    imagem:"https://img.elo7.com.br/product/main/34E0766/papel-parede-star-wars-darth-vader-stormtroopers-3-10x3-0-m-menino.jpg",
     atributos: { 
         ataque: 9,
         defesa: 8,
         magia: 5,
-        mana: 6
     }
 };
 
 var carta3 = {
     nome: "Shiryu de dragão",
+    imagem:"https://cdn.awsli.com.br/600x450/1206/1206083/produto/129234498/a00db1a45c.jpg",
     atributos: { 
         ataque: 5,
         defesa: 9,
         magia: 10,
-        mana: 7
     }
 };
 
 var carta4 = {
     nome: "Cavaleiro de Gêmeos",
+    imagem:"http://4.bp.blogspot.com/-NoR2uXlBgjM/U-YpEbcs9mI/AAAAAAAAAGI/zwl8BhkvkMU/s1600/Saga_de_gemeos.jpg",
     atributos: { 
         ataque: 10,
         defesa: 5,
         magia: 5,
-        mana: 9
     }
 };
 
 var carta5 = {
     nome: "Goku",
+    imagem:"https://observatoriodocinema.uol.com.br/wp-content/uploads/2022/01/goku.jpeg",
     atributos: { 
         ataque: 9,
         defesa: 9,
         magia: 3,
-        mana: 7
     }
 };
 
@@ -66,18 +66,7 @@ function sortearCarta(){
     document.getElementById("btnSortear").disabled = true;
     document.getElementById("btnJogar").disabled = false;
 
-    exibirOpcoes();
-
-};
-
-function exibirOpcoes() {
-    var opcoes = document.getElementById("opcoes");
-    var opcoesTexto = "";
-
-    for (var atributo in cartaJogador.atributos){
-        opcoesTexto += "<input type='radio'name='atributo' value='" + atributo  + "' checked>" + atributo;
-    }
-    opcoes.innerHTML = opcoesTexto;
+    exibirCartaJogador();
 };
 
 function obtemAtributoSelecionado() {
@@ -92,7 +81,9 @@ function obtemAtributoSelecionado() {
 
 function jogar() {
     var atributoSelecionado = obtemAtributoSelecionado();
+
     var elementoResultado = document.getElementById("resultado");
+
     var valorCartaJogador = cartaJogador.atributos[atributoSelecionado];
     var valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado];
 
@@ -102,17 +93,41 @@ function jogar() {
         elementoResultado.innerHTML = "Você Perdeu"
     } else {
         elementoResultado.innerHTML = "Empate"
-    }
+    };
 
-
-    console.log(atributoSelecionado);
+    exibirCartaMaquina();
 };
 
-var recarregar = document.getElementById("recarregar");
-recarregar.addEventListener("click", function() {
-    location.reload();
-});
+function exibirCartaJogador() {
+    var divCartaJogador = document.getElementById("carta-jogador");
+    divCartaJogador.style.backgroundImage = `url(${cartaJogador.imagem})`;
+    // divCartaJogador.style.backgroundImage = "url(" + cartaJogador.imagem + ")"
+    var moldura ='<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
+    var tagHTML = "<div id= 'opcoes' class='carta-status'>"
+    
+    var opcoesTexto = "";
+    for (var atributo in cartaJogador.atributos) {
+        opcoesTexto += "<input type='radio' name='atributo' value='" + atributo + "'>" + atributo + " " + cartaJogador.atributos[atributo] + "<br>";
+    };
 
+    var nome = `<p class="carta-subtitle">${cartaJogador.nome}</p>`;
 
+    divCartaJogador.innerHTML = moldura + nome + tagHTML + opcoesTexto +  "</div>";
+};   
 
+function exibirCartaMaquina() {
+    var divCartaMaquina = document.getElementById("carta-maquina");
+    divCartaMaquina.style.backgroundImage = `url(${cartaMaquina.imagem})`;
+    // divCartaMaquina.style.backgroundImage = "url(" + cartaMaquina.imagem + ")"
+    var moldura ='<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
+    var tagHTML = "<div id= 'opcoes' class='carta-status'>"
 
+    var opcoesTexto = "";
+    for (var atributo in cartaMaquina.atributos) {
+        opcoesTexto += "<p type='text' name='atributo' value='" + atributo + "'>" + atributo + " " + cartaMaquina.atributos[atributo] + "</p>";
+    };
+
+    var nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
+
+    divCartaMaquina.innerHTML = moldura + nome + tagHTML + opcoesTexto +  "</div>";
+}; 

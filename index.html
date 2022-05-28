@@ -1,29 +1,50 @@
 <html>
 
 <head>
-    <title>Super Trunfo</title>
     <link rel="stylesheet" href="style.css">
+    <title>
+        Imersão Dev - Aula 08
+    </title>
 </head>
 
 <body>
     <div class="container">
-        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-super-trunfo.png" class="page-logo"
-            alt="">
-        <h1 class="page-title">Super Trunfo</h1>
+        <div class="nav">
+            <h1 class="page-title">Super Trunfo</h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png"
+                alt="">
+        </div> <!-- NAV -->
 
-        <button onclick="sortearCarta()" id="btnSortear">Sortear carta</button>
+            
+            <form id="form">
+                <div>
+                    <button class="sortear-carta" onclick="sortearCarta()" id="btnSortear">Sortear carta</button>
+                    <h2>Escolha o seu atributo</h2>
+                </div>
+                
+                <div class="wrapper">
+                    <div>
+                        <div id="carta-jogador">
+                            <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
+                                style=" width: inherit; height: inherit; position: absolute;">
+                            <h3></h3>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="carta-maquina" class="carta"><img
+                                src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
+                                style=" width: inherit; height: inherit; position: absolute;"></div>
+                    </div>
+                </div>
+                <div class="jogar">
+                    <button class="button-jogar" type="button" id="btnJogar" onclick="jogar()"
+                        disabled="false">Jogar</button>
+                    <div class="resultado-final" id="resultado">
+                    </div>
+                </div>
+            </form>
 
-        <form id="form">
-            <h2>Escolha o seu atributo</h2>
-            <div class="opcoes" id="opcoes"></div>
-            <button type="button" id="btnJogar" onclick="jogar()" disabled="false">Jogar</button>
-            <div class="opcoes" id="resultado"></div>
-            <div class="opcoes" id="selecione"></div>
-            <br>
-            <button type="button" id="recarregar" onclick="recarregar()">Recarregar</button>
-        </form>
-    </div>
-
+    </div> <!-- Container -->
     <script src="js.js"></script>
 </body>
 
