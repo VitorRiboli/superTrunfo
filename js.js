@@ -65,6 +65,7 @@ function sortearCarta(){
 
     document.getElementById("btnSortear").disabled = true;
     document.getElementById("btnJogar").disabled = false;
+    document.getElementById("btnLimpar").disabled = true;
 
     exibirCartaJogador();
 };
@@ -95,6 +96,9 @@ function jogar() {
         elementoResultado.innerHTML = "Empate"
     };
 
+
+    document.getElementById("btnLimpar").disabled = false;
+    document.getElementById("btnJogar").disabled = true;
     exibirCartaMaquina();
 };
 
@@ -131,3 +135,19 @@ function exibirCartaMaquina() {
 
     divCartaMaquina.innerHTML = moldura + nome + tagHTML + opcoesTexto +  "</div>";
 }; 
+
+function limpar() {
+    const limparResultado = document.getElementById("resultado")
+    limparResultado.innerHTML = ""
+
+    const limparCartaJogador = document.getElementById("carta-jogador")
+    limparCartaJogador.style.backgroundImage = ""
+
+    const limparCartaMaquina = document.getElementById("carta-maquina")
+    limparCartaMaquina.style.backgroundImage = ""
+
+
+    document.getElementById("btnSortear").disabled = false;
+    document.getElementById("btnLimpar").disabled = true;
+}
+
