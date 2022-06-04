@@ -96,6 +96,7 @@ function jogar() {
         elementoResultado.innerHTML = "Empate"
     };
 
+    
 
     document.getElementById("btnLimpar").disabled = false;
     document.getElementById("btnJogar").disabled = true;
@@ -146,8 +147,23 @@ function limpar() {
     const limparCartaMaquina = document.getElementById("carta-maquina")
     limparCartaMaquina.style.backgroundImage = ""
 
+    const limparOpcoes = document.querySelector(".carta-status");
+    limparOpcoes.innerHTML = "";
+
+    const limparSubtitle = document.querySelector(".carta-subtitle");
+    limparSubtitle.innerHTML = "";
+
+    ///////////////////// limpar carta da maquina
+    const limparTitulo = document.querySelector('.carta p');
+    limparTitulo.innerHTML = ''
+    const limparOpcoesMaquina = document.querySelector('.carta .carta-status');
+    limparOpcoesMaquina.innerHTML = ''
 
     document.getElementById("btnSortear").disabled = false;
     document.getElementById("btnLimpar").disabled = true;
+}
+
+function contador() {
+
 }
 
